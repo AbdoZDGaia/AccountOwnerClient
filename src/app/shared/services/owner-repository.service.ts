@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Owner } from './../../_interfaces/owner.mode';
+import { Owner } from '../../_interfaces/owner.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EnvironmentUrlService } from './environment-url.service';
