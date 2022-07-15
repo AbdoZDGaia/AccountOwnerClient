@@ -1,3 +1,4 @@
+import { Account } from './../../_interfaces/account.model';
 import { Owner } from './../../_interfaces/owner.model';
 import { ErrorHandlerService } from './../../shared/services/error-handler.service';
 import { OwnerRepositoryService } from './../../shared/services/owner-repository.service';
@@ -34,5 +35,9 @@ export class OwnerDetailsComponent implements OnInit {
         this.errorMessage = this.errorHandler.errorMessage;
       },
     });
+  }
+
+  printToConsole(param: Account) {
+    console.log('Account parameter from child component', param);
   }
 }
