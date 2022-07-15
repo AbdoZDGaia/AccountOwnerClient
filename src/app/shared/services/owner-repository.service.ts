@@ -1,3 +1,4 @@
+import { OwnerForCreation } from './../../_interfaces/owner-for-creation.model';
 import { Observable } from 'rxjs';
 import { Owner } from '../../_interfaces/owner.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -46,6 +47,14 @@ export class OwnerRepositoryService extends BaseRepositoryService<Owner> {
       this.createCompleteRoute(route, this.envUrl.urlAddress)
     );
   }
+
+  public createOwner = (route: string, owner: OwnerForCreation) => {
+    return this.http.post<Owner>(
+      this.createCompleteRoute(route, this.envUrl.urlAddress),
+      owner,
+      this.generateHeaders()
+    );
+  };
 
   private createCompleteRoute = (route: string, envAddress: string) => {
     return `${envAddress}/${route}`;

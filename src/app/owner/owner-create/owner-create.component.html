@@ -1,0 +1,58 @@
+<div class="container-fluid">
+    <form [formGroup]="form" autocomplete="off" novalidate (ngSubmit)="createOwner(form.value)">
+        <div class="card card-body bg-light mb-2 mt-2">
+
+            <div class="row mb-3">
+                <label for="name" class="col-form-label col-md-2">Name of the owner: </label>
+                <div class="col-md-5">
+                    <input type="text" formControlName="name" id="name" class="form-control" />
+                </div>
+                <div class="col-md-5">
+                    <em *ngFor="let error of getErrors(form.get('name')!, 'Name',
+                {'required':'Name is required',
+                'maxlength':'Maximum allowed length is 60 characters.'})">
+                        {{error}}
+                    </em>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="dateOfBirth" class="col-form-label col-md-2">Date of birth: </label>
+                <div class="col-md-5">
+                    <input type="text" formControlName="dateOfBirth" id="dateOfBirth" class="form-control" readonly
+                        bsDatepicker />
+                </div>
+                <div class="col-md-5">
+                    <em *ngFor="let error of getErrors(form.get('dateOfBirth')!, 'Date of birth',null)">
+                        {{error}}
+                    </em>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="address" class="col-form-label col-md-2">Address: </label>
+                <div class="col-md-5">
+                    <input type="text" formControlName="address" id="address" class="form-control" />
+                </div>
+                <div class="col-md-5">
+                    <em *ngFor="let error of getErrors(form.get('address')!, 'Address',
+                {'maxlength':'Maximum allowed length is 100 characters.'})">
+                        {{error}}
+                    </em>
+                </div>
+            </div>
+
+            <br><br>
+
+            <div class="mb-3 row">
+                <div class="offset-5 col-md-1">
+                    <button type="submit" class="btn btn-info" [disabled]="!form.valid">Save</button>
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-danger" (click)="redirectToOwnerList()">Cancel</button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
